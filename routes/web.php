@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('hello/{msg}',function ($msg) {
+Route::get('hello/{msg?}',function ($msg='no message') {
     $html = <<<EOF
     <html>
     <head>
