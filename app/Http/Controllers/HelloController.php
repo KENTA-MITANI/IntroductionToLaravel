@@ -75,4 +75,14 @@ class HelloController extends Controller
 
         return redirect('/hello');
     }
+
+    public function show(Request $request)
+    {
+        $id = $request->id;
+
+        $item = DB::table('people')->where('id', $id)->first();
+
+        return view('hello.show', ['item' => $item]);
+    }
+
 }
