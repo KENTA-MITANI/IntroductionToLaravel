@@ -13,17 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-
-        if (Schema::hasTable('people')) {
-            // テーブルが存在していればリターン
-            return;
-        }
-
-        Schema::create('people', function (Blueprint $table) {
+        Schema::create('boards', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
-            $table->string('mail');
-            $table->integer('age');
+            $table->integer('person_id');
+            $table->string('title');
+            $table->string('message');
             $table->timestamps();
         });
     }
@@ -35,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('people');
+        Schema::dropIfExists('boards');
     }
 };

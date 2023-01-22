@@ -4,11 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
-use App\Scopes\ScopePerson;
 
 class Person extends Model
 {
+    use HasFactory;
 
     protected $guarded = array('id');
 
