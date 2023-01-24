@@ -23,11 +23,11 @@ class RestappController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('rest.create');
     }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -36,7 +36,11 @@ class RestappController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $restdata = new Restdata;
+        $form = $request->all();
+        unset($form['_token']);
+        $restdata->fill($form)->save();
+        return redirect('/rest');
     }
 
     /**
