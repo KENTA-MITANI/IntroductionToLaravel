@@ -14,15 +14,14 @@ use App\Http\Controllers\HelloController;
 |
 */
 
-Route::get('hello', 'App\Http\Controllers\HelloController@index');
+Route::get('hello', 'App\Http\Controllers\HelloController@index')
+    ->middleware('auth');
 Route::post('hello', 'App\Http\Controllers\HelloController@post');
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('hello', 'App\Http\Controllers\HelloController@index')
-    ->middleware('hello');
 
 Route::get('hello/add', 'App\Http\Controllers\HelloController@add');
 Route::post('hello/add', 'App\Http\Controllers\HelloController@create');
@@ -60,10 +59,9 @@ Route::get('hello/rest', 'App\Http\Controllers\HelloController@rest');
 
 Route::get('hello/session', 'App\Http\Controllers\HelloController@ses_get');
 Route::post('hello/session', 'App\Http\Controllers\HelloController@ses_put');
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('hello/auth', 'App\Http\Controllers\HelloController@getAuth');
+Route::post('hello/auth', 'App\Http\Controllers\HelloController@postAuth');
